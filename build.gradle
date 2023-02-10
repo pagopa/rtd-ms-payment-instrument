@@ -29,12 +29,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-sonarqube {
-    properties {
-        property "sonar.exclusions", "**/*Generated.java"
-    }
-}
-
 test {
     finalizedBy jacocoTestReport
 }
