@@ -30,7 +30,7 @@ steps:
   - task: Gradle@2
     displayName: 'gradlew build'
     inputs:
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      testResultsFiles: '**/test-results/TEST-*.xml'
       sonarQubeRunAnalysis: false
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
