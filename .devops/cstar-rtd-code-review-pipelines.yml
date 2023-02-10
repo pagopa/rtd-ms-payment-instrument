@@ -14,26 +14,18 @@ pr:
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-# steps:
-
-#   - task: SonarCloudPrepare@1
-#     displayName: 'Prepare SonarCloud analysis configuration'
-#     inputs:
-#       SonarCloud: '$(SONARCLOUD_SERVICE_CONN)'
-#       organization: '$(SONARCLOUD_ORG)'
-#       scannerMode: Other
-#       extraProperties: |
-#         sonar.projectKey=$(SONARCLOUD_PROJECT_KEY)
-#         sonar.projectName=$(SONARCLOUD_PROJECT_NAME)
+  - task: SonarCloudPrepare@1
+    displayName: 'Prepare SonarCloud analysis configuration'
+    inputs:
+      SonarCloud: '$(SONARCLOUD_SERVICE_CONN)'
+      organization: '$(SONARCLOUD_ORG)'
+      scannerMode: Other
+      extraProperties: |
+        sonar.projectKey=$(SONARCLOUD_PROJECT_KEY)
+        sonar.projectName=$(SONARCLOUD_PROJECT_NAME)
 
 #   - task: Gradle@2
 #     displayName: 'gradlew build'
