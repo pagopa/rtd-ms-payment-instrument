@@ -41,17 +41,17 @@ steps:
   #     publishJUnitResults: true
   #     tasks: 'build'
 
-  # - task: Gradle@3
-  #   displayName: 'gradlew build'
-  #   inputs:
-  #     goals: 'sonar:sonar'
-  #     options: '-Dsonar.coverage.jacoco.xmlReportPaths=$(xmlReportPaths)'
-  #     publishJUnitResults: false
-  #     javaHomeOption: 'JDKVersion'
-  #     jdkVersionOption: '1.17'
-  #     effectivePomSkip: false
-  #     sonarQubeRunAnalysis: true
-  #     isJacocoCoverageReportXML: false
-  # - task: SonarCloudPublish@1
-  #   inputs:
-  #     pollingTimeoutSec: '300'
+  - task: Gradle@3
+    displayName: 'gradlew build'
+    inputs:
+      goals: 'sonar:sonar'
+      options: '-Dsonar.coverage.jacoco.xmlReportPaths=$(xmlReportPaths)'
+      publishJUnitResults: false
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      effectivePomSkip: false
+      sonarQubeRunAnalysis: true
+      isJacocoCoverageReportXML: false
+  - task: SonarCloudPublish@1
+    inputs:
+      pollingTimeoutSec: '300'
