@@ -46,7 +46,7 @@ steps:
       gradleWrapperFile: 'gradlew'
       tasks: 'jacocoTestReport jacocoTestCoverageVerification'
       publishJUnitResults: true
-      testResultsFiles: '**/test-results/TEST-*.xml'
+      testResultsFiles: '**/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
       sonarQubeRunAnalysis: true
