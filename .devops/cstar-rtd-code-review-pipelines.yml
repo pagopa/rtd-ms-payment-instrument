@@ -27,31 +27,31 @@ steps:
         sonar.projectKey=$(SONARCLOUD_PROJECT_KEY)
         sonar.projectName=$(SONARCLOUD_PROJECT_NAME)
 
-  - task: Gradle@3
-    displayName: 'gradlew build'
-    inputs:
-      testResultsFiles: '**/TEST-*.xml'
-      sonarQubeRunAnalysis: false
-      codeCoverageToolOption: 'JaCoCo'
-      gradleWrapperFile: 'gradlew'
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      tasks: 'build'
+  # - task: Gradle@3
+  #   displayName: 'gradlew build'
+  #   inputs:
+  #     testResultsFiles: '**/TEST-*.xml'
+  #     sonarQubeRunAnalysis: false
+  #     codeCoverageToolOption: 'JaCoCo'
+  #     gradleWrapperFile: 'gradlew'
+  #     gradleOptions: '-Xmx3072m'
+  #     javaHomeOption: 'JDKVersion'
+  #     jdkVersionOption: '1.8'
+  #     jdkArchitectureOption: 'x64'
+  #     publishJUnitResults: true
+  #     tasks: 'build'
 
-  - task: Gradle@3
-    displayName: 'gradlew build'
-    inputs:
-      goals: 'sonar:sonar'
-      options: '-Dsonar.coverage.jacoco.xmlReportPaths=$(xmlReportPaths)'
-      publishJUnitResults: false
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.17'
-      effectivePomSkip: false
-      sonarQubeRunAnalysis: true
-      isJacocoCoverageReportXML: false
-  - task: SonarCloudPublish@1
-    inputs:
-      pollingTimeoutSec: '300'
+  # - task: Gradle@3
+  #   displayName: 'gradlew build'
+  #   inputs:
+  #     goals: 'sonar:sonar'
+  #     options: '-Dsonar.coverage.jacoco.xmlReportPaths=$(xmlReportPaths)'
+  #     publishJUnitResults: false
+  #     javaHomeOption: 'JDKVersion'
+  #     jdkVersionOption: '1.17'
+  #     effectivePomSkip: false
+  #     sonarQubeRunAnalysis: true
+  #     isJacocoCoverageReportXML: false
+  # - task: SonarCloudPublish@1
+  #   inputs:
+  #     pollingTimeoutSec: '300'
