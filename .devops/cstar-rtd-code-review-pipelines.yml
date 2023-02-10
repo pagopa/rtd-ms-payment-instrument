@@ -27,19 +27,6 @@ steps:
         sonar.projectKey=$(SONARCLOUD_PROJECT_KEY)
         sonar.projectName=$(SONARCLOUD_PROJECT_NAME)
 
-  # - task: Gradle@3
-  #   displayName: 'gradlew build'
-  #   inputs:
-  #     testResultsFiles: '**/TEST-*.xml'
-  #     sonarQubeRunAnalysis: false
-  #     codeCoverageToolOption: 'JaCoCo'
-  #     gradleWrapperFile: 'gradlew'
-  #     gradleOptions: '-Xmx3072m'
-  #     javaHomeOption: 'JDKVersion'
-  #     jdkVersionOption: '1.8'
-  #     jdkArchitectureOption: 'x64'
-  #     publishJUnitResults: true
-  #     tasks: 'build' - task: Gradle@3
 
   - task: Gradle@3
     inputs:
@@ -49,9 +36,12 @@ steps:
       testResultsFiles: '**/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
+      codeCoverageToolOption: 'JaCoCo'
+      gradleOptions: '-Xmx3072m'
       sonarQubeRunAnalysis: true
       isJacocoCoverageReportXML: true
       sqGradlePluginVersionChoice: 'latest'
+      jdkArchitectureOption: 'x64'
 
   - task: Gradle@3
     displayName: 'gradlew build'
