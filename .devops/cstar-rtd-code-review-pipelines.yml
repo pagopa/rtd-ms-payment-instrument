@@ -31,29 +31,28 @@ steps:
   - task: Gradle@3
     inputs:
       gradleWrapperFile: 'gradlew'
-      tasks: 'build'
+      tasks: 'clean build jacocoTestReport'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
-      codeCoverageToolOption: 'JaCoCo'
-      gradleOptions: '-Xmx3072m'
-      sonarQubeRunAnalysis: true
-      isJacocoCoverageReportXML: true
-      sqGradlePluginVersionChoice: 'latest'
-      jdkArchitectureOption: 'x64'
+      sonarQubeRunAnalysis: false
+
+  - bash: xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ','); echo "##vso[task.setvariable variable=xmlReportPaths]$xmlReportPaths"
+    displayName: finding jacoco.xml
 
   - task: Gradle@3
     displayName: 'gradlew build'
     inputs:
-      goals: 'sonar:sonar'
+      gradleWrapperFile: 'gradlew'
+      tasks: "sonar"
       options: '-Dsonar.coverage.jacoco.xmlReportPaths=$(xmlReportPaths)'
       publishJUnitResults: false
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
-      effectivePomSkip: false
       sonarQubeRunAnalysis: true
-      isJacocoCoverageReportXML: false
+      sqGradlePluginVersionChoice: 'build'
+
   - task: SonarCloudPublish@1
     inputs:
       pollingTimeoutSec: '300'
