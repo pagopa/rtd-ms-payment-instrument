@@ -5,7 +5,7 @@ plugins {
 	id 'org.graalvm.buildtools.native' version '0.9.18'
 	id 'jacoco'
 	id 'org.sonarqube' version "3.5.0.2730"
-}
+}	
 
 group = 'it.gov.pagopa'
 version = '0.0.1-SNAPSHOT'
@@ -43,6 +43,18 @@ jacocoTestReport {
 	}
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    binaries {
+        main {
+            useFatJar = true
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(17)
+                vendor = JvmVendorSpec.matching("GraalVM Community")
+            }
+        }
+    }
 }
