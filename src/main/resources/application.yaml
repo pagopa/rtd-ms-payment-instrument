@@ -14,3 +14,109 @@ management:
     metrics:
       export:
         enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  cloud:
+    stream:
+      function:
+        definition: 
+      bindings:
+        migrationPiConsumer-in-0:
+          destination: migration-pi
+          group: migration-pi-consumer-group
+          content-type: application/json
+          binder: migration-pi-consumer
+        migrationPiProducer-out-0:
+          destination: migration-pi
+          content-type: application/json
+          binder: migration-pi-producer
+        migrationPiConsumer-in-0:
+          destination: migration-wallet
+          group: migration-wallet-consumer-group
+          content-type: application/json
+          binder: migration-wallet-consumer
+        migrationWalletProducer-out-0:
+          destination: migration-wallet
+          content-type: application/json
+          binder: migration-wallet-producer
+      binders:
+        migration-pi-producer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
+                      configuration:
+                        sasl:
+                          jaas:
+                            config: ${KAFKA_SASL_JAAS_CONFIG_PRODUCER_MIGRATION_PI}
+                          mechanism: PLAIN
+                        security:
+                          protocol: SASL_SSL
+                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        migration-pi-consumer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
+                      configuration:
+                        sasl:
+                          jaas:
+                            config: ${KAFKA_SASL_JAAS_CONFIG_CONSUMER_MIGRATION_PI}
+                          mechanism: PLAIN
+                        security:
+                          protocol: SASL_SSL
+                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        migration-wallet-producer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
+                      configuration:
+                        sasl:
+                          jaas:
+                            config: ${KAFKA_SASL_JAAS_CONFIG_PRODUCER_MIGRATION_WALLET}
+                          mechanism: PLAIN
+                        security:
+                          protocol: SASL_SSL
+                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        migration-wallet-consumer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
+                      configuration:
+                        sasl:
+                          jaas:
+                            config: ${KAFKA_SASL_JAAS_CONFIG_CONSUMER_MIGRATION_WALLET}
+                          mechanism: PLAIN
+                        security:
+                          protocol: SASL_SSL
+                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
