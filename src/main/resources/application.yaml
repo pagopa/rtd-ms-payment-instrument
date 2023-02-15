@@ -34,7 +34,7 @@ spring:
           destination: migration-pi
           content-type: application/json
           binder: migration-pi-producer
-        migrationPiConsumer-in-0:
+        migrationWalletConsumer-in-0:
           destination: migration-wallet
           group: migration-wallet-consumer-group
           content-type: application/json
