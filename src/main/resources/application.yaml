@@ -23,7 +23,7 @@ spring:
   cloud:
     stream:
       function:
-        definition: 
+        definition: migrationPiConsumer
       bindings:
         migrationPiConsumer-in-0:
           destination: migration-pi

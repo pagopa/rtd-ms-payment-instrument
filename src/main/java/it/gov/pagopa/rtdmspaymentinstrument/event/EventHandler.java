@@ -2,7 +2,6 @@ package it.gov.pagopa.rtdmspaymentinstrument.event;
 
 
 import java.util.function.Consumer;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -11,7 +10,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 /**
  * /** Component defining the processing steps in response to events in the projector queue.
  */
-@Slf4j
+
 @Configuration
 public class EventHandler {
 
