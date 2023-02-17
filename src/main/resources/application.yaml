@@ -32,30 +32,7 @@ spring:
           group: migration-pi-consumer-group
           content-type: application/json
           binder: migration-pi-consumer
-        migrationPiProducer-out-0:
-          destination: migration-pi
-          content-type: application/json
-          binder: migration-pi-producer
       binders:
-        migration-pi-producer:
-          type: kafka
-          environment:
-            spring:
-              cloud:
-                stream:
-                  kafka:
-                    binder:
-                      auto-create-topics: false
-                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
-                      configuration:
-                        sasl:
-                          jaas:
-                            config: ${KAFKA_SASL_JAAS_CONFIG_PRODUCER_MIGRATION_PI}
-                          mechanism: PLAIN
-                        security:
-                          protocol: SASL_SSL
-                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
         migration-pi-consumer:
           type: kafka
           environment:

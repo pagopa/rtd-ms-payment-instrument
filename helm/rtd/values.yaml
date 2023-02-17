@@ -48,7 +48,6 @@ microservice-chart:
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     KAFKA_SASL_JAAS_CONFIG_CONSUMER_MIGRATION_PI: evh-migration-pi-migration-pi-consumer-policy-rtd
-    KAFKA_SASL_JAAS_CONFIG_PRODUCER_MIGRATION_PI: evh-migration-pi-migration-pi-producer-policy-rtd  
 
   envConfigMapExternals:
     rtd-payment-instrument:
