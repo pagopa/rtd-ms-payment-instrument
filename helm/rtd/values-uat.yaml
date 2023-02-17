@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: cstarucommonacr.azurecr.io/rtdmspaymentinstument
+    repository: cstarucommonacr.azurecr.io/rtdmspaymentinstrument
     tag: latest
     pullPolicy: Always
 

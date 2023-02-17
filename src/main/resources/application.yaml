@@ -1,6 +1,8 @@
 logging:
   level:
     root: INFO
+    org.apache.kafka: WARN
+
 
 management:
   info.defaults.enabled: false
