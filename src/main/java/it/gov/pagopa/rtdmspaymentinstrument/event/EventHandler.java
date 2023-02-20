@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
+import it.gov.pagopa.rtdmspaymentinstrument.model.MigrationPmEvent;
 import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProcessor;
 
 /**
@@ -15,7 +16,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 public class EventHandler {
 
     @Bean
-    public Consumer<Message<String>> migrationPiConsumer(
+    public Consumer<Message<MigrationPmEvent>> migrationPiConsumer(
             PaymentManagerMigrationProcessor paymentManagerMigrationProcessor) {
         return message -> paymentManagerMigrationProcessor.processing(message.getPayload());
     }
