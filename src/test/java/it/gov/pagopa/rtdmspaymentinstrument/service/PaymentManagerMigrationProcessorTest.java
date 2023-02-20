@@ -17,7 +17,7 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 
 @SpringBootTest
 @ExtendWith(OutputCaptureExtension.class)
-public class PaymentManagerMigrationProcessorTest {
+class PaymentManagerMigrationProcessorTest {
 
     @SpyBean
     private PaymentManagerMigrationProcessor paymentManagerMigrationProcessor;

@@ -1,7 +1,6 @@
 package it.gov.pagopa.rtdmspaymentinstrument.model;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -25,54 +24,54 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MigrationPmEvent {
 
-    /**
-     * The Old Id wallet.
-     */
-    @NotNull
-    @NotBlank
-    String idWalletOld;
+        /**
+         * The Old Id wallet.
+         */
+        @NotNull
+        @NotBlank
+        String idWalletOld;
 
-    /**
-     * The pan hashed.
-     */
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = "[a-zA-Z0-9]{64}",
-            message = "HPAN length must be 64 alphanumeric char at max")
-    String hashPan;
+        /**
+         * The pan hashed.
+         */
+        @NotNull
+        @NotBlank
+        @Pattern(regexp = "[a-zA-Z0-9]{64}",
+                        message = "HPAN length must be 64 alphanumeric char at max")
+        String hashPan;
 
-    /**
-     * The card's Bin.
-     */
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = "\\d{6}|\\d{8}", message = "BIN length must match \\d{6}|\\d{8}")
-    String bin;
+        /**
+         * The card's Bin.
+         */
+        @NotNull
+        @NotBlank
+        @Pattern(regexp = "\\d{6}|\\d{8}", message = "BIN length must match \\d{6}|\\d{8}")
+        String bin;
 
-    /**
-     * The pan masked with "*" char. Only first 6 and last 4 characters will be visible.
-     */
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = "?<=.{6})*(?=.{4})",
-            message = "Masked pan must match 6 characters + a masked part with * + last 4 characters")
-    String maskedPan;
+        /**
+         * The pan masked with "*" char. Only first 6 and last 4 characters will be visible.
+         */
+        @NotNull
+        @NotBlank
+        @Pattern(regexp = "?<=.{6})*(?=.{4})",
+                        message = "Masked pan must match 6 characters + a masked part with * + last 4 characters")
+        String maskedPan;
 
-    /**
-     * The card's expiration date.
-     */
-    @NotNull
-    @NotBlank
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    LocalDateTime expiryDate;
+        /**
+         * The card's expiration date.
+         */
+        @NotNull
+        @NotBlank
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        @JsonSerialize(using = LocalDateTimeSerializer.class)
+        @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+        LocalDateTime expiryDate;
 
-    /**
-     * The phone number.
-     */
-    @NotNull
-    @NotBlank
-    String jiffyCellphoneNumber;
+        /**
+         * The phone number.
+         */
+        @NotNull
+        @NotBlank
+        String jiffyCellphoneNumber;
 
 }
