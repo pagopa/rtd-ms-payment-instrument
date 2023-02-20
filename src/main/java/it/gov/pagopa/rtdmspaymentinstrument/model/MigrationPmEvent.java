@@ -29,7 +29,7 @@ public class MigrationPmEvent {
          */
         @NotNull
         @NotBlank
-        String idWalletOld;
+        private String idWalletOld;
 
         /**
          * The pan hashed.
@@ -38,7 +38,7 @@ public class MigrationPmEvent {
         @NotBlank
         @Pattern(regexp = "[a-zA-Z0-9]{64}",
                         message = "HPAN length must be 64 alphanumeric char at max")
-        String hashPan;
+        private String hashPan;
 
         /**
          * The card's Bin.
@@ -46,7 +46,7 @@ public class MigrationPmEvent {
         @NotNull
         @NotBlank
         @Pattern(regexp = "\\d{6}|\\d{8}", message = "BIN length must match \\d{6}|\\d{8}")
-        String bin;
+        private String bin;
 
         /**
          * The pan masked with "*" char. Only first 6 and last 4 characters will be visible.
@@ -55,7 +55,7 @@ public class MigrationPmEvent {
         @NotBlank
         @Pattern(regexp = "?<=.{6})*(?=.{4})",
                         message = "Masked pan must match 6 characters + a masked part with * + last 4 characters")
-        String maskedPan;
+        private String maskedPan;
 
         /**
          * The card's expiration date.
@@ -65,13 +65,13 @@ public class MigrationPmEvent {
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         @JsonSerialize(using = LocalDateTimeSerializer.class)
         @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-        LocalDateTime expiryDate;
+        private LocalDateTime expiryDate;
 
         /**
          * The phone number.
          */
         @NotNull
         @NotBlank
-        String jiffyCellphoneNumber;
+        private String jiffyCellphoneNumber;
 
 }
