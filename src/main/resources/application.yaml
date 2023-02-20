@@ -1,6 +1,8 @@
 logging:
   level:
     root: INFO
+    org.apache.kafka: WARN
+
 
 management:
   info.defaults.enabled: false
@@ -14,3 +16,40 @@ management:
     metrics:
       export:
         enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  cloud:
+    stream:
+      function:
+        definition: migrationPiConsumer
+      bindings:
+        migrationPiConsumer-in-0:
+          destination: migration-pi
+          group: migration-pi-consumer-group
+          content-type: application/json
+          binder: migration-pi-consumer
+      binders:
+        migration-pi-consumer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
+                      configuration:
+                        sasl:
+                          jaas:
+                            config: ${KAFKA_SASL_JAAS_CONFIG_CONSUMER_MIGRATION_PI}
+                          mechanism: PLAIN
+                        security:
+                          protocol: SASL_SSL
+                        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+  

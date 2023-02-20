@@ -1,0 +1,35 @@
+logging:
+  level:
+    root: INFO
+
+paymentinstrument:
+  resources:
+    base:
+      path: src/test/resources
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  cloud:
+    stream:
+      function:
+        definition: migrationPiConsumer
+      bindings:
+        bindings:
+        migrationPiConsumer-in-0:
+          destination: migration-pi
+          group: migration-pi-consumer-group
+          content-type: application/json
+      binders:
+        migration-pi-consumer:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      auto-create-topics: false
+                      brokers: ${spring.embedded.kafka.brokers}
