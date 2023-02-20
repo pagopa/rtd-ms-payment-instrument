@@ -10,6 +10,6 @@ FROM debian:stable-slim
 
 EXPOSE 8080
 
-COPY --from=builder /app/build/native/nativeCompile/rtd-ms-payment-instrumnet .
+COPY --from=builder /app/build/native/nativeCompile/rtd-ms-payment-instrument .
 
-ENTRYPOINT ["./rtd-ms-payment-instrumnet"]
+ENTRYPOINT ["./rtd-ms-payment-instrument"]
