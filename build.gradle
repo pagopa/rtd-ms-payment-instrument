@@ -1,3 +1,5 @@
+import java.util.function.Predicate
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.2'
@@ -51,7 +53,27 @@ tasks.named('test'){
     useJUnitPlatform()
 }
 
+
+task testWithAgent(type: Test) {
+    // GRAALVM_HOME must be set
+    useJUnitPlatform()
+    finalizedBy(metadataCopy)
+}
+
+
 graalvmNative {
+
+	agent {
+		defaultMode = "standard"
+		enabled = true
+		metadataCopy {
+			inputTaskNames.add("testWithAgent")
+			outputDirectories.add("src/main/resources/META-INF/native-image")
+			mergeWithExisting = true
+		}
+		tasksToInstrumentPredicate = { t -> (t.name == "testWithAgent") } as Predicate<Task>
+    }
+
     binaries {
         main {
             useFatJar = true
