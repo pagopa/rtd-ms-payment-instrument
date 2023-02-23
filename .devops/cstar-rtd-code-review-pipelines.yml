@@ -7,9 +7,9 @@ pr:
   autoCancel: false
   branches:
     include:
-      - main
       - develop
-      - uat
+#      - uat
+#      - main
 
 pool:
   vmImage: ubuntu-latest

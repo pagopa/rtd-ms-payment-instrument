@@ -67,11 +67,11 @@ graalvmNative {
 		defaultMode = "standard"
 		enabled = true
 		metadataCopy {
-			inputTaskNames.add("testWithAgent")
+			inputTaskNames.add("bootRun")
 			outputDirectories.add("src/main/resources/META-INF/native-image")
 			mergeWithExisting = true
 		}
-		tasksToInstrumentPredicate = { t -> (t.name == "testWithAgent") } as Predicate<Task>
+		tasksToInstrumentPredicate = { t -> (t.name == "bootRun") } as Predicate<Task>
     }
 
     binaries {
@@ -81,7 +81,12 @@ graalvmNative {
                 languageVersion = JavaLanguageVersion.of(17)
                 vendor = JvmVendorSpec.matching("GraalVM Community")
             }
+			buildArgs.add('-H:IncludeResources=.*application.yaml$')
         }
+    }
+
+    metadataRepository {
+        enabled = true
     }
 }
 
