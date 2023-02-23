@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RtdMsPaymentInstrumentApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RtdMsPaymentInstrumentApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(RtdMsPaymentInstrumentApplication.class, args);
+  }
 
 }
+  

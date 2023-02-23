@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class PaymentManagerMigrationProcessor {
 
-    public void processing(MigrationPmEvent message) {
-        log.info(message.getIdWalletOld());
-    }
+  public void processing(MigrationPmEvent message) {
+    log.info(message.getIdWalletOld());
+  }
 
 }

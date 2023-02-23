@@ -15,9 +15,9 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 @Configuration
 public class EventHandler {
 
-    @Bean
-    public Consumer<Message<MigrationPmEvent>> migrationPiConsumer(
-            PaymentManagerMigrationProcessor paymentManagerMigrationProcessor) {
-        return message -> paymentManagerMigrationProcessor.processing(message.getPayload());
-    }
+  @Bean
+  public Consumer<Message<MigrationPmEvent>> migrationPiConsumer(
+      PaymentManagerMigrationProcessor paymentManagerMigrationProcessor) {
+    return message -> paymentManagerMigrationProcessor.processing(message.getPayload());
+  }
 }
