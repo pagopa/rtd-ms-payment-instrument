@@ -17,6 +17,10 @@ management:
       export:
         enabled: false
 
+
+wallet:
+  service:
+    url: http://localhost:9561
 ---
 spring:
   config:
