@@ -51,13 +51,6 @@ test {
 }
 
 
-task testWithAgent(type: Test) {
-    // GRAALVM_HOME must be set
-    useJUnitPlatform()
-    finalizedBy(metadataCopy)
-}
-
-
 graalvmNative {
 
 	agent {
