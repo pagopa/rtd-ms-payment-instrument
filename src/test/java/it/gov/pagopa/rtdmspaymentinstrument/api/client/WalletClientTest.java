@@ -17,13 +17,11 @@ import it.gov.pagopa.rtdmspaymentinstrument.configuration.WireMockConfig;
 import it.gov.pagopa.rtdmspaymentinstrument.dto.WalletInfoDto;
 import it.gov.pagopa.rtdmspaymentinstrument.mapper.WalletInfoMapper;
 import it.gov.pagopa.rtdmspaymentinstrument.model.WalletInfo;
-import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @ActiveProfiles("test")
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
-@Slf4j
 @Import(WireMockConfig.class)
 public class WalletClientTest {
 
