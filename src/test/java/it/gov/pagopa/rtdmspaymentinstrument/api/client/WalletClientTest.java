@@ -11,6 +11,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import it.gov.pagopa.rtdmspaymentinstrument.configuration.WireMockConfig;
@@ -22,7 +23,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.model.WalletInfo;
 @ActiveProfiles("test")
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
-@Import(WireMockConfig.class)
+@ContextConfiguration(classes={WireMockConfig.class})
 public class WalletClientTest {
 
   @Autowired
