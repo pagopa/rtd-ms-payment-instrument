@@ -23,7 +23,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.model.WalletInfo;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @Import(WireMockConfig.class)
-public class WalletClientTest {
+class WalletClientTest {
 
   @Autowired
   private WireMockServer mockWalletApiService;
@@ -37,7 +37,7 @@ public class WalletClientTest {
   }
 
   @Test
-  public void whenPutWallet_thenTheCorrectWalletShouldBeUpdated() {
+  void whenPutWallet_thenTheCorrectWalletShouldBeUpdated() {
 
     WalletInfoMapper walletInfoMapper = new WalletInfoMapper();
     WalletInfo walletInfo = new WalletInfo().builder().

@@ -7,7 +7,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 
 
-public class WalletMocks {
+class WalletMocks {
 
   public static void setupMockWalletResponse(WireMockServer mockService) throws IOException {
     mockService.stubFor(WireMock.put(WireMock.urlPathMatching("/update/.*"))
