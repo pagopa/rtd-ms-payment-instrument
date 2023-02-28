@@ -29,7 +29,7 @@ class WalletClientTest {
   @SpyBean
   private WireMockServer mockWalletApiService;
 
-  @SpyBean
+  @Autowired
   private WalletApiClient walletApiClient;
 
   @BeforeEach
