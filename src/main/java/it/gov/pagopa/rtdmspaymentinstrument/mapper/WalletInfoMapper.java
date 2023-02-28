@@ -10,7 +10,6 @@ public class WalletInfoMapper {
   }
   
   public static WalletInfoDto toWalletInfoDto(WalletInfo walletInfo) {
-    return new WalletInfoDto().setIdWalletOld(walletInfo.getIdWalletOld())
-        .setIdPaymentInstrument(walletInfo.getIdPaymentInstrument());
+    return new WalletInfoDto(walletInfo.getIdWalletOld(),walletInfo.getIdPaymentInstrument());
   }
 }

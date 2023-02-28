@@ -9,7 +9,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 public class AppConfiguration {
     
   @Bean
-  public PaymentManagerMigration gPaymentManagerMigration(){
+  public PaymentManagerMigration paymentManagerMigration(){
     return new PaymentManagerMigrationProcessor();
   }
   
