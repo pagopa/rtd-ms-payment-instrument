@@ -27,6 +27,7 @@ spring:
     activate:
       on-profile: default
   cloud:
+    refresh.enabled: false
     stream:
       function:
         definition: migrationPiConsumer
