@@ -7,6 +7,10 @@ paymentinstrument:
     base:
       path: src/test/resources
 
+
+wallet:
+  service:
+    url: http://localhost:9561
 ---
 spring:
   config:

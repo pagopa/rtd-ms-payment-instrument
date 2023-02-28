@@ -2,6 +2,7 @@ package it.gov.pagopa.rtdmspaymentinstrument.model;
 
 import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -29,6 +30,7 @@ public class MigrationPmEvent {
    */
   @NotNull
   @NotBlank
+  @JsonProperty(value = "idWalletOld", required = true)
   private String idWalletOld;
 
   /**
@@ -37,6 +39,7 @@ public class MigrationPmEvent {
   @NotNull
   @NotBlank
   @Pattern(regexp = "[a-zA-Z0-9]{64}", message = "HPAN length must be 64 alphanumeric char at max")
+  @JsonProperty(value = "hashPan", required = true)
   private String hashPan;
 
   /**
@@ -45,6 +48,7 @@ public class MigrationPmEvent {
   @NotNull
   @NotBlank
   @Pattern(regexp = "\\d{6}|\\d{8}", message = "BIN length must match \\d{6}|\\d{8}")
+  @JsonProperty(value = "bin", required = true)
   private String bin;
 
   /**
@@ -54,6 +58,7 @@ public class MigrationPmEvent {
   @NotBlank
   @Pattern(regexp = "?<=.{6})*(?=.{4})",
       message = "Masked pan must match 6 characters + a masked part with * + last 4 characters")
+  @JsonProperty(value = "maskedPan", required = true)
   private String maskedPan;
 
   /**
@@ -64,6 +69,7 @@ public class MigrationPmEvent {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   @JsonSerialize(using = LocalDateTimeSerializer.class)
   @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+  @JsonProperty(value = "expiryDate", required = true)
   private LocalDateTime expiryDate;
 
   /**
@@ -71,6 +77,7 @@ public class MigrationPmEvent {
    */
   @NotNull
   @NotBlank
+  @JsonProperty(value = "jiffyCellphoneNumber", required = true)
   private String jiffyCellphoneNumber;
 
 }
