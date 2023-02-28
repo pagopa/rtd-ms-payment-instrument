@@ -27,9 +27,10 @@ import it.gov.pagopa.rtdmspaymentinstrument.model.WalletInfo;
 class WalletClientTest {
 
   @SpyBean
-  private WalletApiClient walletApiClient;
-
   private WireMockServer mockWalletApiService;
+
+  @SpyBean
+  private WalletApiClient walletApiClient;
 
   @BeforeEach
   void setUp() throws IOException {
