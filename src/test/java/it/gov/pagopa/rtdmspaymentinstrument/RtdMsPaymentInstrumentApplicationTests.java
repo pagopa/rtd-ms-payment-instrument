@@ -8,13 +8,12 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 
 @SpringBootTest
 @EmbeddedKafka(topics = {"migration-pi"}, partitions = 1,
-		bootstrapServersProperty = "spring.embedded.kafka.brokers")
+    bootstrapServersProperty = "spring.embedded.kafka.brokers")
 @TestPropertySource(value = {"classpath:application-test.yml"}, inheritProperties = false)
 
 class RtdMsPaymentInstrumentApplicationTests {
 
-	@SpyBean
-	private PaymentManagerMigrationProcessor paymentManagerMigrationProcessor;
-
+  @SpyBean
+  private PaymentManagerMigrationProcessor paymentManagerMigrationProcessor;
 
 }

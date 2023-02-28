@@ -39,13 +39,12 @@ class WalletClientTest {
   @Test
   void whenPutWallet_thenTheCorrectWalletShouldBeUpdated() {
 
-    WalletInfo walletInfo = new WalletInfo().builder().
-      idPaymentInstrument("testpaymentinstrumentid1").
-      idWalletOld("testwalletidold1").
-      build();
+    WalletInfo walletInfo = new WalletInfo().builder()
+        .idPaymentInstrument("testpaymentinstrumentid1").idWalletOld("testwalletidold1").build();
 
     WalletInfoDto walletInfoDto = WalletInfoMapper.toWalletInfoDto(walletInfo);
-    assertTrue(walletApiClient.updateWallet(walletInfoDto, "testidmockwallet").contains("wallet updated"));    
+    assertTrue(
+        walletApiClient.updateWallet(walletInfoDto, "testidmockwallet").contains("wallet updated"));
   }
 
 }

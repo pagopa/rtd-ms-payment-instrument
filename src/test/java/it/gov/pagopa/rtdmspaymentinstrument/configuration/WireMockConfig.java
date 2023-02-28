@@ -1,4 +1,4 @@
-package it.gov.pagopa.rtdmspaymentinstrument.configuration; 
+package it.gov.pagopa.rtdmspaymentinstrument.configuration;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
