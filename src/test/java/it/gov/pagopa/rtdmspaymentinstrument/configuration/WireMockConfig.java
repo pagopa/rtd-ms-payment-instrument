@@ -1,13 +1,13 @@
 package it.gov.pagopa.rtdmspaymentinstrument.configuration;
 
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.ActiveProfiles;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
 
 @TestConfiguration
-@ActiveProfiles("test")
+@EnableFeignClients
 public class WireMockConfig {
 
   @Bean(initMethod = "start", destroyMethod = "stop")
