@@ -1,7 +1,6 @@
 package it.gov.pagopa.rtdmspaymentinstrument.service;
 
 import it.gov.pagopa.rtdmspaymentinstrument.model.MigrationPmEvent;
-
 import java.time.LocalDateTime;
 
 import static org.hamcrest.Matchers.containsString;

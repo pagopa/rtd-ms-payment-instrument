@@ -1,7 +1,7 @@
 package it.gov.pagopa.rtdmspaymentinstrument;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.TestPropertySource;
 import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProcessor;
@@ -13,7 +13,7 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 
 class RtdMsPaymentInstrumentApplicationTests {
 
-  @SpyBean
+  @Autowired
   private PaymentManagerMigrationProcessor paymentManagerMigrationProcessor;
 
 }
