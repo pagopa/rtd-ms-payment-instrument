@@ -10,7 +10,6 @@ import it.gov.pagopa.rtdmspaymentinstrument.service.PaymentManagerMigrationProce
 @EmbeddedKafka(topics = {"migration-pi"}, partitions = 1,
     bootstrapServersProperty = "spring.embedded.kafka.brokers")
 @TestPropertySource(value = {"classpath:application-test.yml"}, inheritProperties = false)
-
 class RtdMsPaymentInstrumentApplicationTests {
 
   @Autowired

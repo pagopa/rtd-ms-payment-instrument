@@ -21,7 +21,6 @@ spring:
       function:
         definition: migrationPiConsumer
       bindings:
-        bindings:
         migrationPiConsumer-in-0:
           destination: migration-pi
           group: migration-pi-consumer-group
@@ -37,4 +36,4 @@ spring:
                   kafka:
                     binder:
                       auto-create-topics: false
-                      brokers: ${spring.embedded.kafka.brokers}
+                      brokers: ${KAFKA_BROKER_PI://localhost:29095}
