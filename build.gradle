@@ -2,9 +2,9 @@ import java.util.function.Predicate
 
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.0.2'
+	id 'org.springframework.boot' version '3.0.3'
 	id 'io.spring.dependency-management' version '1.1.0'
-	//id 'org.graalvm.buildtools.native' version '0.9.18'
+	id 'org.graalvm.buildtools.native' version '0.9.18'
 	id 'jacoco'
 	id 'org.sonarqube' version "3.5.0.2730"
 }
@@ -50,7 +50,7 @@ test {
 	finalizedBy jacocoTestReport
 }
 
-/* 
+ 
 graalvmNative {
 
 	agent {
@@ -78,7 +78,21 @@ graalvmNative {
     metadataRepository {
         enabled = true
     }
-} */
+}
+
+
+// disable processAot until https://github.com/spring-cloud/spring-cloud-stream/issues/2655 was fix
+tasks.named("processAot") {
+    configure {
+        enabled = false
+    }
+}
+
+tasks.named("processTestAot") {
+    configure {
+        enabled = false
+    }
+}
 
 ext {
 	set('springCloudVersion', "2022.0.1")
