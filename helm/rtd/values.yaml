@@ -44,7 +44,10 @@ microservice-chart:
 
   securityContext:
     allowPrivilegeEscalation: false
-  
+
+  envConfig:
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     KAFKA_SASL_JAAS_CONFIG_CONSUMER_MIGRATION_PI: evh-migration-pi-migration-pi-consumer-policy-rtd
