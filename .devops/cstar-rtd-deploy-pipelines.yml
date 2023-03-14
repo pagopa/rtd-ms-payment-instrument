@@ -99,7 +99,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                version=$(./gradlew properties -q | grep "version:" | awk '{print $2}')
+                version=$(./build.gradle properties -q | grep "version =" | awk '{print $2}')
                 echo "##vso[task.setvariable variable=outputprojectversion;isOutput=true]$version"
               failOnStderr: true
 
@@ -107,7 +107,7 @@ stages:
     displayName: 'Build_and_Publish_to_${{ variables.environment }}'
     dependsOn: 'project_version'
     variables:
-      project_version: $[ stageDependencies.Release.ProjectVersion.outputs['getprojectversion.outputprojectversion'] ]
+      project_version: $[ stageDependencies.project_version.ProjectVersion.outputs['getprojectversion.outputprojectversion'] ]
     jobs:
       - job: Build
         displayName: Build
