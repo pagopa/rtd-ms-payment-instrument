@@ -99,8 +99,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                version=$(cat ./build.gradle | grep -o 'version =' | awk '{print $2}')
-                echo $(version)
+                version=$(cat ./build.gradle | grep 'version =' | awk '{print $3}')
                 echo "##vso[task.setvariable variable=outputprojectversion;isOutput=true]$version"
               failOnStderr: true
               
